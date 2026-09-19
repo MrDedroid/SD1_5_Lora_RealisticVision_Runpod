@@ -1,0 +1,126 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "realisticVisionV60B1_v51VAE_pruned_fp16.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "3": {
+    "inputs": {
+      "text": "milan_fit_girl,\nMilan, a young adult woman,\nlight warm beige skin with a soft warm undertone,\ndark brown-blonde roots, golden blonde mid-lengths and ends,\nnatural blonde highlights,\nlong layered hair with soft waves framing her oval face,\nbrown eyes, petite frame,\ncasual everyday smartphone photo,\ncandid snapshot,\nvisible from head to knees, knees visible,\nmischievous grin, cheeky smile, sweet playful expression,\nnatural everyday body language,\nspontaneous moment,\nordinary everyday setting, natural indoor lighting,\nrealistic smartphone photography,\nauthentic unposed appearance,",
+      "clip": [
+        "9",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt) - Positive"
+    }
+  },
+  "4": {
+    "inputs": {
+      "text": "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render,\nsketch, cartoon, drawing, anime:1.4),\n(worst quality, low quality:1.3),\ndeformed, distorted, disfigured, bad anatomy, bad proportions,\nblurry, jpeg artifacts, ugly, poorly drawn face,\nextra fingers, mutated hands, poorly drawn hands,\nextra limbs, missing limbs, fused fingers, too many fingers,\nlong neck, cloned face,\nclose-up, upper body, bust,\ncropped, out of frame, cut off, missing legs,\nfashion photoshoot, fashion model, runway, catwalk,\nstudio photography, editorial photography,\nprofessional photoshoot, model pose, exaggerated pose,\nglamorous pose, overly posed,\ntext, watermark, signature",
+      "clip": [
+        "9",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt) - Negative"
+    }
+  },
+  "5": {
+    "inputs": {
+      "width": 512,
+      "height": 768,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "seed": 619461798937817,
+      "steps": 20,
+      "cfg": 6,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "9",
+        0
+      ],
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "4",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "7": {
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "8": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "9": {
+    "inputs": {
+      "lora_name": "milan_fit_girl.safetensors",
+      "strength_model": 0.9,
+      "strength_clip": 0.93,
+      "model": [
+        "1",
+        0
+      ],
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA (Model and CLIP)"
+    }
+  }
+}

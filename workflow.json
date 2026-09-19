@@ -1,0 +1,482 @@
+{
+  "id": "2b029aca-e85b-4091-aa5b-40eea2727048",
+  "revision": 0,
+  "last_node_id": 9,
+  "last_link_id": 24,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -470.1335950637633,
+        245.5641955813506
+      ],
+      "size": [
+        441.2166748046875,
+        140.25
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            21
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            20
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "realisticVisionV60B1_v51VAE_pruned_fp16.safetensors"
+      ],
+      "widgets_values_named": {
+        "ckpt_name": "realisticVisionV60B1_v51VAE_pruned_fp16.safetensors"
+      }
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        645.7425143111286,
+        -81.02296621345263
+      ],
+      "size": [
+        445.8166809082031,
+        200
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Prompt) - Positive",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "milan_fit_girl,\nMilan, a young adult woman,\nlight warm beige skin with a soft warm undertone,\ndark brown-blonde roots, golden blonde mid-lengths and ends,\nnatural blonde highlights,\nlong layered hair with soft waves framing her oval face,\nbrown eyes, petite frame,\ncasual everyday smartphone photo,\ncandid snapshot,\nvisible from head to knees, knees visible,\nmischievous grin, cheeky smile, sweet playful expression,\nnatural everyday body language,\nspontaneous moment,\nordinary everyday setting, natural indoor lighting,\nrealistic smartphone photography,\nauthentic unposed appearance,"
+      ],
+      "widgets_values_named": {
+        "text": "milan_fit_girl,\nMilan, a young adult woman,\nlight warm beige skin with a soft warm undertone,\ndark brown-blonde roots, golden blonde mid-lengths and ends,\nnatural blonde highlights,\nlong layered hair with soft waves framing her oval face,\nbrown eyes, petite frame,\ncasual everyday smartphone photo,\ncandid snapshot,\nvisible from head to knees, knees visible,\nmischievous grin, cheeky smile, sweet playful expression,\nnatural everyday body language,\nspontaneous moment,\nordinary everyday setting, natural indoor lighting,\nrealistic smartphone photography,\nauthentic unposed appearance,"
+      },
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 4,
+      "type": "CLIPTextEncode",
+      "pos": [
+        656.7523605998713,
+        339.46632656646386
+      ],
+      "size": [
+        449.6833190917969,
+        198.35000610351562
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Prompt) - Negative",
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render,\nsketch, cartoon, drawing, anime:1.4),\n(worst quality, low quality:1.3),\ndeformed, distorted, disfigured, bad anatomy, bad proportions,\nblurry, jpeg artifacts, ugly, poorly drawn face,\nextra fingers, mutated hands, poorly drawn hands,\nextra limbs, missing limbs, fused fingers, too many fingers,\nlong neck, cloned face,\nclose-up, upper body, bust,\ncropped, out of frame, cut off, missing legs,\nfashion photoshoot, fashion model, runway, catwalk,\nstudio photography, editorial photography,\nprofessional photoshoot, model pose, exaggerated pose,\nglamorous pose, overly posed,\ntext, watermark, signature"
+      ],
+      "widgets_values_named": {
+        "text": "(deformed iris, deformed pupils, semi-realistic, cgi, 3d, render,\nsketch, cartoon, drawing, anime:1.4),\n(worst quality, low quality:1.3),\ndeformed, distorted, disfigured, bad anatomy, bad proportions,\nblurry, jpeg artifacts, ugly, poorly drawn face,\nextra fingers, mutated hands, poorly drawn hands,\nextra limbs, missing limbs, fused fingers, too many fingers,\nlong neck, cloned face,\nclose-up, upper body, bust,\ncropped, out of frame, cut off, missing legs,\nfashion photoshoot, fashion model, runway, catwalk,\nstudio photography, editorial photography,\nprofessional photoshoot, model pose, exaggerated pose,\nglamorous pose, overly posed,\ntext, watermark, signature"
+      },
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 5,
+      "type": "EmptyLatentImage",
+      "pos": [
+        659.2311209905006,
+        589.0343326205009
+      ],
+      "size": [
+        443.5666809082031,
+        151.9166717529297
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        512,
+        768,
+        1
+      ],
+      "widgets_values_named": {
+        "width": 512,
+        "height": 768,
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 6,
+      "type": "KSampler",
+      "pos": [
+        1259.5171912832343,
+        149.57112391485578
+      ],
+      "size": [
+        270,
+        286
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 24
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        619461798937817,
+        "randomize",
+        20,
+        6,
+        "dpmpp_2m",
+        "karras",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 619461798937817,
+        "control_after_generate": "randomize",
+        "steps": 20,
+        "cfg": 6,
+        "sampler_name": "dpmpp_2m",
+        "scheduler": "karras",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 7,
+      "type": "VAEDecode",
+      "pos": [
+        1620.5017729341303,
+        272.58331697145167
+      ],
+      "size": [
+        225,
+        78
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 8
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 8,
+      "type": "SaveImage",
+      "pos": [
+        1876.965498488713,
+        272.95533113447533
+      ],
+      "size": [
+        709.0499877929688,
+        805.8666381835938
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": null
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ],
+      "widgets_values_named": {
+        "filename_prefix": "ComfyUI"
+      }
+    },
+    {
+      "id": 9,
+      "type": "LoraLoader",
+      "pos": [
+        61.937594019781216,
+        145.88004141397082
+      ],
+      "size": [
+        438.20001220703125,
+        162
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 21
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            24
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            22,
+            23
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "milan_fit_girl.safetensors",
+        0.9,
+        0.93
+      ],
+      "widgets_values_named": {
+        "lora_name": "milan_fit_girl.safetensors",
+        "strength_model": 0.9,
+        "strength_clip": 0.93
+      }
+    }
+  ],
+  "links": [
+    [
+      5,
+      3,
+      0,
+      6,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      6,
+      4,
+      0,
+      6,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      7,
+      5,
+      0,
+      6,
+      3,
+      "LATENT"
+    ],
+    [
+      8,
+      6,
+      0,
+      7,
+      0,
+      "LATENT"
+    ],
+    [
+      9,
+      1,
+      2,
+      7,
+      1,
+      "VAE"
+    ],
+    [
+      10,
+      7,
+      0,
+      8,
+      0,
+      "IMAGE"
+    ],
+    [
+      20,
+      1,
+      1,
+      9,
+      1,
+      "CLIP"
+    ],
+    [
+      21,
+      1,
+      0,
+      9,
+      0,
+      "MODEL"
+    ],
+    [
+      22,
+      9,
+      1,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      23,
+      9,
+      1,
+      4,
+      0,
+      "CLIP"
+    ],
+    [
+      24,
+      9,
+      0,
+      6,
+      0,
+      "MODEL"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7331768773451159,
+      "offset": [
+        436.5166476667524,
+        276.22839014887626
+      ]
+    },
+    "frontendVersion": "1.51.10"
+  },
+  "version": 0.4
+}
